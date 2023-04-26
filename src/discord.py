@@ -15,12 +15,17 @@ class Discord():
         self.eventtype = None
 
         self.callimage = pg.image.load("icucall.png")
-        #self.callimage = pg.image.load
+        self.msgimage = pg.image.load("icumsg.png")
         self.callimage = pg.transform.scale(self.callimage, (dc_sizeX, dc_sizeY))
+        self.msgimage = pg.transform.scale(self.msgimage, (dc_sizeX, dc_sizeY))
 
     def show(self):
         if self.eventtype == "call":
             self.surface.blit(self.callimage, self.dc_pos)
+            self.eventon = True
+
+        if self.eventtype == "message":
+            self.surface.blit(self.msgimage, self.dc_pos)
             self.eventon = True
 
     def event(self, randnum):
