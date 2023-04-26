@@ -4,8 +4,8 @@ from obj.tablet.tablet import Tablet
 pygame.init()
 
     # Game Window's variables
-screen_width = 1920
-screen_height = 1080
+screen_width = 920
+screen_height = 920
 
 # Game Window
 screen = pygame.display.set_mode((screen_width, screen_height))
