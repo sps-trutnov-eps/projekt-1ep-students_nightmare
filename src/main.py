@@ -1,4 +1,6 @@
 import pygame
+
+from obj.tablet.tablet import Tablet
 pygame.init()
 
     # Game Window's variables
@@ -7,6 +9,8 @@ screen_height = 1080
 
 # Game Window
 screen = pygame.display.set_mode((screen_width, screen_height))
+
+tablet = Tablet()
 
 while True:
     # Easily exit the game 
