@@ -17,9 +17,9 @@ stump_x = 310
 stump_y = 252
 stump_angle = 0
 
-   # Knife
-knife_x = 220
-knife_y = 670
+       # Knife
+knife_x = 250
+knife_y = 685
 
 # IMAGES (background/stump/knife)
 
