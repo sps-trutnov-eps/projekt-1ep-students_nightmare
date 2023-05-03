@@ -6,17 +6,26 @@ pygame.init()
 pygame.display.set_caption("Knife Hit")
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 
-# HODNOTY (screen/stump)
+# HODNOTY (screen/stump/knife)
 
    # Screen
 width = 640
 height = 960
+
    # Stump
 stump_x = 310
 stump_y = 252
 stump_angle = 0
 
-# IMAGES (background/stump)
+   # Knife
+knife_x = 220
+knife_y = 670
+
+# IMAGES (background/stump/knife)
+
+ # knife
+knife_img = pygame.image.load("Images/knife.png")
+knife_rect = knife_img.get_rect()
 
  # stump
 stump_img = pygame.image.load("Images/stump.png")
@@ -37,6 +46,7 @@ while running:
             running = False
     
     screen.blit(background_img, (0, 0))
+    screen.blit(knife_img, (knife_x, knife_y))
     
     current_time = pygame.time.get_ticks()
     time_elapsed = current_time - last_time
