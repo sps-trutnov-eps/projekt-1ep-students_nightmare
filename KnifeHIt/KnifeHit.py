@@ -6,7 +6,7 @@ pygame.init()
 pygame.display.set_caption("Knife Hit")
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 
-# HODNOTY (screen/stump/knife)
+# HODNOTY (screen/stump/knife/knife_bullet/knifes)
 
    # Screen
 width = 640
@@ -17,11 +17,19 @@ stump_x = 310
 stump_y = 252
 stump_angle = 0
 
-       # Knife
+   # Knife
 knife_x = 250
 knife_y = 685
 
-# IMAGES (background/stump/knife)
+   # Knife_bullet
+knifes = []
+knife_speed = -10
+knife_bullet_x = 250
+knife_bullet_y = 658
+last_space_press = 0
+
+
+# IMAGES (background/stump/knife/knife_bullet)
 
  # knife
 knife_img = pygame.image.load("Images/knife.png")
@@ -32,10 +40,13 @@ stump_img = pygame.image.load("Images/stump.png")
 stump_rect = stump_img.get_rect()
 stump_rect.center = (stump_x, stump_y)
 
- # Background
+ # background
 window = pygame.display.set_mode((width,height))
 background_img = pygame.image.load("Images/background.jpg")
 background_img = pygame.transform.scale(background_img,(width,height))
+
+ # knife
+knife_bullet_img = pygame.image.load("Images/knife2.png") 
 
 last_time = pygame.time.get_ticks()
 
@@ -50,6 +61,7 @@ while running:
     
     current_time = pygame.time.get_ticks()
     time_elapsed = current_time - last_time
+    keys = pygame.key.get_pressed()
     
     # Rotace pařezu
     stump_angle += 300 * time_elapsed / 1000
@@ -59,6 +71,15 @@ while running:
     stump_img_rotated = pygame.transform.rotate(stump_img, stump_angle)
     stump_rect = stump_img_rotated.get_rect(center=stump_rect.center)
     screen.blit(stump_img_rotated, stump_rect)
+    
+    if keys[K_SPACE]:
+            current_time = time.time()
+            if current_time - last_space_press > 0.7:
+                knifes.append([knife_x + knife_rect.width//2 - knife_bullet_x//2, knife_y])
+                last_space_press = current_time
+    for knife in knifes:
+        knife[1] += knife_speed
+        window.blit(pygame.transform.scale(knife_bullet_img, (knife_x, knife_y)), knife)   
 
     pygame.display.update()
     
