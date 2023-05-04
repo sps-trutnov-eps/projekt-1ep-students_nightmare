@@ -23,9 +23,9 @@ knife_y = 685
 
    # Knife_bullet
 knifes = []
-knife_speed = -10
+knife_speed = -2
 knife_bullet_x = 250
-knife_bullet_y = 658
+knife_bullet_y = 685
 last_space_press = 0
 
 
@@ -63,6 +63,18 @@ while running:
     time_elapsed = current_time - last_time
     keys = pygame.key.get_pressed()
     
+    
+    if keys[K_SPACE]:
+            current_time = time.time()
+            if current_time - last_space_press > 0.7:
+                knifes.append([knife_x + knife_rect.width//2 - knife_bullet_x//2, knife_y])
+                last_space_press = current_time
+    for knife in knifes:
+        knife[1] += knife_speed
+        window.blit(pygame.transform.scale(knife_bullet_img, (knife_x, knife_y)), knife)
+        
+    
+    
     # Rotace pařezu
     stump_angle += 300 * time_elapsed / 1000
     if stump_angle >= 360:
@@ -72,14 +84,7 @@ while running:
     stump_rect = stump_img_rotated.get_rect(center=stump_rect.center)
     screen.blit(stump_img_rotated, stump_rect)
     
-    if keys[K_SPACE]:
-            current_time = time.time()
-            if current_time - last_space_press > 0.7:
-                knifes.append([knife_x + knife_rect.width//2 - knife_bullet_x//2, knife_y])
-                last_space_press = current_time
-    for knife in knifes:
-        knife[1] += knife_speed
-        window.blit(pygame.transform.scale(knife_bullet_img, (knife_x, knife_y)), knife)   
+    
 
     pygame.display.update()
     
