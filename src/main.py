@@ -1,9 +1,9 @@
 import pygame
 
 from obj.tablet.tablet import Tablet
+from obj.tablet.tablet_button import TabletButton
 from obj.computer.computer import Computer
 from obj.doors.doors import Doors
-
 
 pygame.init()
 
@@ -15,6 +15,7 @@ screen_height = 1080
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 tablet = Tablet()
+tablet_button = TabletButton()
 computer = Computer()
 doors = Doors()
 
