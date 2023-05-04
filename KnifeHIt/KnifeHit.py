@@ -61,7 +61,7 @@ while running:
             running = False
     
     screen.blit(background_img, (0, 0))
-    screen.blit(knife_img, (knife2_x, knife2_y))
+    screen.blit(knife_img, (knife_x, knife_y))
     
     current_time = pygame.time.get_ticks()
     time_elapsed = current_time - last_time
