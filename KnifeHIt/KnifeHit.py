@@ -16,6 +16,7 @@ height = 960
 stump_x = 310
 stump_y = 252
 stump_angle = 0
+stump_rotation_speed = 30
 
    # Knife
 knife_x = 250
@@ -82,7 +83,7 @@ while running:
     
 # Rotace pařezu
      
-    stump_angle += 60000 * time_elapsed / 1000
+    stump_angle += stump_rotation_speed 
     if stump_angle >= 360:
         stump_angle = 0
         
