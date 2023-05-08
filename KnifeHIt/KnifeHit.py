@@ -89,7 +89,6 @@ while running:
     line_width = time_left / game_time * timer_width
     pygame.draw.line(screen, red, (timer_x, timer_y), (timer_x + line_width, timer_y), timer_height)
 
-    # Vykreslíme text s časem zbyvajícím do konce hry
     font = pygame.font.Font(None, 24)
     text = font.render(f"Time left: {time_left}", True, black)
     screen.blit(text, (timer_x, timer_y + timer_height + 5))
@@ -105,8 +104,7 @@ while running:
         knife[1] += knife_speed
         window.blit(pygame.transform.scale(knife_bullet_img, (knife2_x, knife2_y)), knife)
          
-# Rotace pařezu
-     
+# Rotace pařezu     
     stump_angle += stump_rotation_speed 
     if stump_angle >= 360:
         stump_angle = 0
