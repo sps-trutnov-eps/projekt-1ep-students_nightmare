@@ -44,8 +44,6 @@ white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
 
-
-
 # IMAGES (background/stump/knife/knife_bullet)
 
  # knife
@@ -70,8 +68,6 @@ last_time = pygame.time.get_ticks()
 game_time = 20
 start_ticks = pygame.time.get_ticks()
 
-
-
 running = True 
 while running:
     for event in pygame.event.get():
@@ -92,9 +88,7 @@ while running:
     font = pygame.font.Font(None, 24)
     text = font.render(f"Time left: {time_left}", True, black)
     screen.blit(text, (timer_x, timer_y + timer_height + 5))
-    if game_time <= 0:
-        running = False
-  
+ 
     if keys[K_SPACE]:
         current_time = time.time()
         if current_time - last_space_press > 0.7:
@@ -103,8 +97,7 @@ while running:
     for knife in knifes:
         knife[1] += knife_speed
         window.blit(pygame.transform.scale(knife_bullet_img, (knife2_x, knife2_y)), knife)
-         
-# Rotace pařezu     
+              
     stump_angle += stump_rotation_speed 
     if stump_angle >= 360:
         stump_angle = 0
@@ -112,8 +105,15 @@ while running:
     stump_img_rotated = pygame.transform.rotate(stump_img, stump_angle)
     stump_rect = stump_img_rotated.get_rect(center=stump_rect.center)
     screen.blit(stump_img_rotated, stump_rect)
+    
+    for knife in knifes:
+        if knife[1] < stump_y and knife[1] + knife2_y > stump_y:
+            if stump_x - knife2_x/2 < knife[0] < stump_x + knife2_x/2:
+                knife_speed = 0
+                knife[1] = stump_y - 1 
       
-
+    if time_left <= 0:
+        running = False
     pygame.display.update()
     
     last_time = current_time
