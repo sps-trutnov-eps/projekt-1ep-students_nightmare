@@ -20,7 +20,8 @@ class Tablet(Element):
                          (elements.getint('Tablet', 'WIDTH'), elements.getint('Tablet', 'HEIGHT')))
         self.showed = True
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-    
+        #self.surface = pygame.Surface()
+
     
     def toggle(self) -> bool:
         if self.showed:
@@ -32,4 +33,4 @@ class Tablet(Element):
 
     def update(self, window: pygame.Surface) -> None:
         if self.showed:
-            pygame.draw.rect(window, (255,255,255), self.rect)
+            pygame.draw.rect(window, (255,255,255), self.rect, 5)

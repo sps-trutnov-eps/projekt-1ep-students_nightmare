@@ -1,17 +1,19 @@
 import pygame
+from obj.element import Element
 
-class Camera(pygame.sprite.Sprite):
-    def __init__(self,x, y, image):
-        pygame.sprite.Sprite.__init__(self)
+
+class Camera(Element):
+
+    def __init__(self, image: pygame.Surface, window: pygame.Surface):
         self.image = image
         self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = x, y
+        x = window.get_width() / 2 - self.rect.width / 2
+        y = window.get_height() - self.rect.height
+        super().__init__((x, y), (self.rect.width, self.rect.height))
+                
+        self.window = window
+
        
     def update(self):
-        # Destroying the pipe
-        self.rect.x -= self.pipe_speed
-        if self.rect.x <= -200: 
-            self.kill()
 
-    def destroy(self):
-        self.kill() 
+        self.window.blit(self.image, (self.x, self.y))
