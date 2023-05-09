@@ -13,6 +13,7 @@ class Discord():
         self.dc_pos = self.dc_posX, self.dc_posY
         self.eventon = False
         self.eventtype = None
+        self.zmacknuto = False
         self.sound_1 = pygame.mixer.Sound("")
         self.sound_2 = pygame.mixer.Sound("")
 
@@ -22,18 +23,19 @@ class Discord():
         self.msgimage = pg.transform.scale(self.msgimage, (dc_sizeX, dc_sizeY))
 
     def show(self):
-        if self.eventtype == "call":
-            self.surface.blit(self.callimage, self.dc_pos)
-            self.eventon = True
-
-        if self.eventtype == "message":
-            self.surface.blit(self.msgimage, self.dc_pos)
-            self.eventon = True
+        if self.zmacknuto == False:
+            if self.eventtype == "call":
+                self.surface.blit(self.callimage, self.dc_pos)
+                self.eventon = True
+            if self.eventtype == "message":
+                self.surface.blit(self.msgimage, self.dc_pos)
+                self.eventon = True
 
     def event(self, randnum):
         if self.eventon == False:
             if randnum >= 30 and randnum <= 35:
                 self.eventtype = "call"
+                self.zmacknuto = False
             if randnum >= 75 and randnum <= 80:
                 self.eventtype = "message"
                 
@@ -44,3 +46,10 @@ class SOUNDS():
 
     def play_sound_2(self):
         self.sound_2.play()
+                self.zmacknuto = False
+    
+    def detect(self, key):
+        if self.eventon == True:
+            if key[pg.K_e]:
+                self.zmacknuto = True
+                self.eventon = False

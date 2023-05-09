@@ -28,10 +28,13 @@ while True:
         pg.quit()
         sys.exit()
 
-    if random_counter >= 120:
+    if random_counter >= 10:
         random_cislo = rm.randrange(1, 150)
         random_counter = 0
 
+    random_counter += 1
+
+    dc.detect(keys)
     dc.event(random_cislo)
     dc.show()
 
