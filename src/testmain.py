@@ -1,5 +1,6 @@
 from discord import Discord
 import pygame as pg
+from pygame import mixer
 import sys
 import random as rm
 
