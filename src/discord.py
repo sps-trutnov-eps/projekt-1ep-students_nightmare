@@ -6,6 +6,8 @@ class Discord():
 
     def __init__(self, dc_sizeX, dc_sizeY, dc_posX, dc_posY, surface):
         
+        mixer.init()
+
         self.dc_sizeX = dc_sizeX
         self.dc_sizeY = dc_sizeY
         self.dc_posX = dc_posX
@@ -16,11 +18,11 @@ class Discord():
         self.eventtype = None
         self.zmacknuto = False
 
-        self.sound_1 = pg.mixer.Sound("")
-        self.sound_2 = pg.mixer.Sound("")
+        self.sound_1 = pg.mixer.Sound("obj/discord/sounds/phzvuck.wav")
+        self.sound_2 = pg.mixer.Sound("obj/discord/sounds/phzvuck.wav")
 
-        self.callimage = pg.image.load("icucall.png")
-        self.msgimage = pg.image.load("icumsg.png")
+        self.callimage = pg.image.load("obj/discord/icucall.png")
+        self.msgimage = pg.image.load("obj/discord/icumsg.png")
         self.callimage = pg.transform.scale(self.callimage, (dc_sizeX, dc_sizeY))
         self.msgimage = pg.transform.scale(self.msgimage, (dc_sizeX, dc_sizeY))
 
