@@ -7,25 +7,30 @@ from obj.doors.doors import Doors
 
 pygame.init()
 
-# Game Window's variables
-screen_width = 1920
-screen_height = 1080
+# Game window's variables
+SCREEN_WIDTH = 1920
+SCREEN_HEIGHT = 1080
 
-# Game Window
-screen = pygame.display.set_mode((screen_width, screen_height))
+# Game window
+window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 tablet = Tablet()
-tablet_button = TabletButton()
+tablet_button = TabletButton(window)
 computer = Computer()
 doors = Doors()
 
 
 while True:
-    # Easily exit the game 
+
+    # Events
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        # Easily exit the game
+        if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             pygame.quit()
-            exit() 
-               
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE  :
             exit()
+
+    tablet.update(window)
+    tablet_button.update()
+
+
+    pygame.display.update()
