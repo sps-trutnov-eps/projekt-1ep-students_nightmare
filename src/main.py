@@ -29,6 +29,6 @@ while True:
             exit()
 
     tablet.update(window)
-
+    doors.render(window)
 
     pygame.display.update()
