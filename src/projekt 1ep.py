@@ -1,20 +1,51 @@
+import random
 import pygame
 pygame.init()
 X,Y = 800,600
-x, y, w, h = 200, 300, 50, 50
-r, g, b = 0, 255, 0
+x, y, w, h = 400, 300, 50, 50
+tlacitko_x, tlacitko_y, tlacitko_w, tlacitko_h = 300,300 ,50 ,50
+tlacitko_r, tlacitko_g, tlacitko_b = 0,255,0
+dvere_r,dvere_g,dvere_b = 0,255,0
+
+ucitel_u_dveri = False
+
 okno = pygame.display.set_mode((X, Y))
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
     
-    mouse = pygame.mouse.get_pos()
-    
-    if mouse[0] >= x and mouse[0] <= x+w and mouse[1] >= y and mouse[1] <= y+h:
-        r,g,b = 255,0,0
+    if random.randint(0, 1000) < 2 and not ucitel_u_dveri:
+        ucitel_u_dveri = True
     else:
-        r,g,b = 0,255,0
+        print(ucitel_u_dveri)
+    
+    mouse = pygame.mouse.get_pos()
+    mp = pygame.mouse.get_pressed(num_buttons=3)
+    
+    mys_vodorovne = mouse[0] >= tlacitko_x and mouse[0] <= tlacitko_x+tlacitko_w
+    mys_svisle = mouse[1] >= tlacitko_y and mouse[1] <= tlacitko_y+tlacitko_h
+    mys_na_tlacitku = mys_vodorovne and mys_svisle
+    mys_stisk = mp[0]
+    tlacitko_stisknute = mys_na_tlacitku and mys_stisk
+    # tlacitko
+    if tlacitko_stisknute:
+        tlacitko_r,tlacitko_g,tlacitko_b = 255,0,0
+    else:
+        tlacitko_r,tlacitko_g,tlacitko_b = 0,255,0
+
+    # dvere
+    if not tlacitko_stisknute and not ucitel_u_dveri:
+        dvere_r,dvere_g,dvere_b = 0,255,0
+    elif not tlacitko_stisknute and ucitel_u_dveri:
+        dvere_r,dvere_g,dvere_b = 0,0,255
+    elif tlacitko_stisknute:
+        dvere_r,dvere_g,dvere_b = 255,0,0
+    
+    if ucitel_u_dveri and tlacitko_stisknute:
+        ucitel_u_dveri = False 
+    
     okno.fill((255,255,255))
-    pygame.draw.rect(okno, (r, g, b), (x, y, w, h))
+    pygame.draw.rect(okno, (dvere_r,dvere_g,dvere_b), (x, y, w, h))
+    pygame.draw.rect(okno, (tlacitko_r, tlacitko_g, tlacitko_b), (tlacitko_x,tlacitko_y,tlacitko_w,tlacitko_h))
     pygame.display.update()
