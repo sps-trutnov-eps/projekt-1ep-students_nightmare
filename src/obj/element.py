@@ -9,12 +9,16 @@ class Element:
         self.y: int = rect.y
         self.width: int = rect.width
         self.height: int = rect.height
+        self.last_clicked = 0
         
 
     def touched(self, mouse: pygame.mouse) -> bool:
         return self.rect.collidepoint(mouse.get_pos()[0], mouse.get_pos()[1])
     
     def clicked(self, mouse: pygame.mouse) -> bool:
-        if mouse.get_pressed()[0]:
-            return self.rect.collidepoint(mouse.get_pos()[0], mouse.get_pos()[1])
-        return False
+        time = pygame.time.get_ticks()
+        if time > self.last_clicked + 100:
+            self.last_clicked = time
+            if mouse.get_pressed()[0]:
+                return self.rect.collidepoint(mouse.get_pos()[0], mouse.get_pos()[1])
+            return False

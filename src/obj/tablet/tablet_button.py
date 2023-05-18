@@ -14,8 +14,3 @@ class TabletButton(Element):
 
     def update(self):
         self.window.blit(self.image, (self.x, self.y))
-
-
-            
-
-
