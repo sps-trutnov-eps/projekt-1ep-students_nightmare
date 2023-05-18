@@ -53,8 +53,7 @@ knife_rect = knife_img.get_rect()
  # stump
 stump_img = pygame.image.load("Images/stump.png")
 stump_rect = stump_img.get_rect()
-stump_rect.
-center = (stump_x, stump_y)
+stump_rect.center = (stump_x, stump_y)
 
  # background
 window = pygame.display.set_mode((width,height))
@@ -112,7 +111,8 @@ while running:
             if stump_x - knife2_x/2 < knife[0] < stump_x + knife2_x/2:
                 knife_speed = 0
                 knife[1] = stump_y - 1 
-  # turn off    
+  # turn off
+  
     if time_left <= 0:
         running = False
     pygame.display.update()
