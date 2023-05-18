@@ -16,8 +16,7 @@ class Tablet(Element):
     def __init__(self) -> None:
         pos_x = window.getint('Dimensions', 'WIDTH') / 2 - elements.getint('Tablet', 'WIDTH') / 2
         pos_y = window.getint('Dimensions', 'HEIGHT') / 2 - elements.getint('Tablet', 'HEIGHT') / 2
-        super().__init__(pygame.Rect(self.x, self.y, elements.getint('Tablet', 'WIDTH'), elements.getint('Tablet', 'HEIGHT')),
-                         (pos_x, pos_y))
+        super().__init__(pygame.Rect(pos_x, pos_y, elements.getint('Tablet', 'WIDTH'), elements.getint('Tablet', 'HEIGHT')))
         self.showed = True
     
     
