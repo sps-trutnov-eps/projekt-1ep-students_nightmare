@@ -57,7 +57,7 @@ stump_rect.center = (stump_x, stump_y)
 
  # background
 window = pygame.display.set_mode((width,height))
-background_img = pygame.image.load("Images/background.jpg")
+background_img = pygame.image.load("Images/sankysbg.jpg")
 background_img = pygame.transform.scale(background_img,(width,height))
 
  # knife
@@ -120,4 +120,3 @@ while running:
     last_time = current_time
 
 pygame.quit()
-
