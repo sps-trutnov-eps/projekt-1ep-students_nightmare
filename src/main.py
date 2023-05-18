@@ -29,6 +29,7 @@ while True:
             pygame.quit()
             exit()
 
+    print(tablet_button.clicked(pygame.mouse))
     tablet.update(window)
     tablet_button.update()
 
