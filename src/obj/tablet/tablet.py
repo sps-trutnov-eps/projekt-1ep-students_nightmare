@@ -2,6 +2,7 @@ import pygame
 import configparser
 
 from obj.element import Element
+from obj.tablet.camera_list import CameraList
 
 
 window_config = configparser.ConfigParser()
@@ -26,6 +27,9 @@ class Tablet(Element):
         else:
             self.showed = True
         return self.showed
+    
+    def printCameraList(self):
+
 
     def update(self) -> None:
         if self.showed:
