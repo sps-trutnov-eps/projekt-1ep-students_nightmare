@@ -1,5 +1,6 @@
 import random
 import pygame
+import time
 pygame.init()
 X,Y = 800,600
 x, y, w, h = 400, 300, 50, 50
@@ -17,8 +18,13 @@ while True:
     
     if random.randint(0, 1000) < 2 and not ucitel_u_dveri:
         ucitel_u_dveri = True
+        cas_ucitel = pygame.time.get_ticks() / 1000
+        cas_jumpscare = 6
+        print(cas_ucitel)
+  
+        
     else:
-        print(ucitel_u_dveri)
+        pass
     
     mouse = pygame.mouse.get_pos()
     mp = pygame.mouse.get_pressed(num_buttons=3)
@@ -41,7 +47,10 @@ while True:
         dvere_r,dvere_g,dvere_b = 0,0,255
     elif tlacitko_stisknute:
         dvere_r,dvere_g,dvere_b = 255,0,0
-    
+    if ucitel_u_dveri:
+        cas_ted = pygame.time.get_ticks() / 1000
+        if cas_ted - cas_ucitel >= cas_jumpscare:
+            print("fatty")
     if ucitel_u_dveri and tlacitko_stisknute:
         ucitel_u_dveri = False 
     
