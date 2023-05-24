@@ -34,6 +34,7 @@ while True:
 
     if tablet_button.clicked(pygame.mouse):
         tablet.toggle()
+    tablet.printCameraList()
     tablet.update()
     tablet_button.update()
 

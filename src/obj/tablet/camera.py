@@ -5,7 +5,8 @@ from obj.element import Element
 
 class Camera(Element):
 
-    def __init__(self, position: tuple[int, int], window: pygame.Surface, image: pygame.Surface):
+    def __init__(self, position: tuple[int, int], window: pygame.Surface, name: str, image: pygame.Surface):
+        self.name = name
         self.image = image
         image_rect = self.image.get_rect()
         super().__init__(image_rect, window)
