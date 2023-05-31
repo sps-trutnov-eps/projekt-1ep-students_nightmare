@@ -18,8 +18,8 @@ class Discord():
         self.eventtype = None
         self.zmacknuto = False
 
-        self.sound_1 = pg.mixer.Sound("obj/discord/sounds/phzvuck.wav")
-        self.sound_2 = pg.mixer.Sound("obj/discord/sounds/phzvuck.wav")
+        self.sound_1 = pg.mixer.Sound("obj/discord/sounds/callvibrate.wav")
+        self.sound_2 = pg.mixer.Sound("obj/discord/sounds/zprava.wav")
 
         self.callimage = pg.image.load("obj/discord/icucall.png")
         self.msgimage = pg.image.load("obj/discord/icumsg.png")
@@ -41,10 +41,12 @@ class Discord():
                 self.eventtype = "call"
                 self.zmacknuto = False
                 self.sound_1.play()
+                randnum = 0
             if randnum >= 75 and randnum <= 80:
                 self.eventtype = "message"
                 self.zmacknuto = False
                 self.sound_2.play()
+                randnum = 0
         
     def detect(self, key):
         if self.eventon == True:
