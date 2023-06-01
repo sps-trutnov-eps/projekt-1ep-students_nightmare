@@ -21,8 +21,8 @@ class Discord():
         self.sound_1 = pg.mixer.Sound("obj/discord/sounds/callvibrate.wav")
         self.sound_2 = pg.mixer.Sound("obj/discord/sounds/zprava.wav")
 
-        self.callimage = pg.image.load("obj/discord/icucall.png")
-        self.msgimage = pg.image.load("obj/discord/icumsg.png")
+        self.callimage = pg.image.load("obj/discord/callimage.png")
+        self.msgimage = pg.image.load("obj/discord/msgimage.png")
         self.callimage = pg.transform.scale(self.callimage, (dc_sizeX, dc_sizeY))
         self.msgimage = pg.transform.scale(self.msgimage, (dc_sizeX, dc_sizeY))
 
