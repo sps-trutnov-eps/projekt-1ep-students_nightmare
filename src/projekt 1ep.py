@@ -2,15 +2,55 @@ import random
 import pygame
 import time
 pygame.init()
-X,Y = 800,600
-x, y, w, h = 400, 300, 50, 50
-tlacitko_x, tlacitko_y, tlacitko_w, tlacitko_h = 300,300 ,50 ,50
-tlacitko_r, tlacitko_g, tlacitko_b = 0,255,0
-dvere_r,dvere_g,dvere_b = 0,255,0
+
+screen_X,screen_Y = 800, 600
+mouse = pygame.mouse.get_pos()
+mp = pygame.mouse.get_pressed(num_buttons=3)
+
+#x, y, w, h = 400, 300, 50, 50
+#tlacitko_x, tlacitko_y, tlacitko_w, tlacitko_h = 300, 300 ,50 ,50
+#tlacitko_r, tlacitko_g, tlacitko_b = 0, 255 ,0
+#dvere_r,dvere_g,dvere_b = 0, 255 ,0
+
+class Tlacitko:
+    def __init__(self, x):
+        self.X = x
+        self.Y = 300
+        self.width = 50
+        self.height = 50
+        self.R = 0
+        self.G = 255
+        self.B = 0
+
+class Mys:
+    def __init__(self):
+        tlacitko = Tlacitko(self)
+        
+        self.vodorovne = mouse[0] >= tlacitko.X and mouse[0] <= tlacitko.X + tlacitko.width
+        self.svisle = mouse[1] >= tlacitko.Y and mouse[1] <= tlacitko.Y + tlacitko.height
+        self.na_tlacitku = self.vodorovne and self.svisle
+        self.stisk = mp[0]
+        
+
+
+class Dvere:
+    def __init__(self):
+        self.R = 0
+        self.G = 255
+        self.B = 0
 
 ucitel_u_dveri = False
 
-okno = pygame.display.set_mode((X, Y))
+tlacitko_vlevo = Tlacitko(300)
+tlacitko_vpravo = Tlacitko(400)
+
+mys = Mys()
+
+dvere = Dvere()
+
+okno = pygame.display.set_mode((screen_X, screen_Y))
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -22,35 +62,28 @@ while True:
         cas_jumpscare = 6
         print(cas_ucitel)
   
-        
     else:
         pass
     
-    mouse = pygame.mouse.get_pos()
-    mp = pygame.mouse.get_pressed(num_buttons=3)
-    
-    mys_vodorovne = mouse[0] >= tlacitko_x and mouse[0] <= tlacitko_x+tlacitko_w
-    mys_svisle = mouse[1] >= tlacitko_y and mouse[1] <= tlacitko_y+tlacitko_h
-    mys_na_tlacitku = mys_vodorovne and mys_svisle
-    mys_stisk = mp[0]
-    tlacitko_stisknute = mys_na_tlacitku and mys_stisk
-    # tlacitko
-    if tlacitko_stisknute:
-        tlacitko_r,tlacitko_g,tlacitko_b = 255,0,0
-    else:
-        tlacitko_r,tlacitko_g,tlacitko_b = 0,255,0
 
-    # dvere
+
+      
+    if tlacitko.stisk:
+        tlacitko.R,tlacitko.G,tlacitko.B = 255, 0, 0
+         
+    else:
+         tlacitko.R,tlacitko.G,tlacitko.B = 0, 255, 0
+
     if not tlacitko_stisknute and not ucitel_u_dveri:
-        dvere_r,dvere_g,dvere_b = 0,255,0
+         dvere.r,dvere_g,dvere_b = 0,255,0
     elif not tlacitko_stisknute and ucitel_u_dveri:
-        dvere_r,dvere_g,dvere_b = 0,0,255
+         dvere_r,dvere_g,dvere_b = 0,0,255
     elif tlacitko_stisknute:
-        dvere_r,dvere_g,dvere_b = 255,0,0
+         dvere_r,dvere_g,dvere_b = 255,0,0
     if ucitel_u_dveri:
         cas_ted = pygame.time.get_ticks() / 1000
         if cas_ted - cas_ucitel >= cas_jumpscare:
-            print("fatty")
+             print("fatty")
     if ucitel_u_dveri and tlacitko_stisknute:
         ucitel_u_dveri = False 
     
