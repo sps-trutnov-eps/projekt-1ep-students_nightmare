@@ -1,23 +1,22 @@
-from discord import Discord
+from discord import Discord #
 import pygame as pg
-from pygame import mixer
 import sys
-import random as rm
+import random as rm #
 
-random_counter = 60
-random_cislo = 0
+random_counter = 60 #
+random_cislo = 0 #
 
 clock = pg.time.Clock()
 fps = 60
 
 obraz = pg.display.set_mode((1280, 720))
 
-dc = Discord(200, 100, 100, 100, obraz)
+dc = Discord(200, 100, 100, 100, obraz) #
 
 while True:
     obraz.fill((0, 255, 255))
 
-    keys = pg.key.get_pressed()
+    keys = pg.key.get_pressed() #
     events = pg.event.get()
 
     for i in events:
@@ -29,15 +28,15 @@ while True:
         pg.quit()
         sys.exit()
 
-    if random_counter >= 10:
-        random_cislo = rm.randrange(1, 150)
-        random_counter = 0
+    if random_counter >= 10: #
+        random_cislo = rm.randrange(1, 150) #
+        random_counter = 0 #
 
-    random_counter += 1
+    random_counter += 1 #
 
-    dc.detect(keys)
-    dc.event(random_cislo)
-    dc.show()
+    dc.detect(keys) #
+    dc.event(random_cislo) #
+    dc.show() #
 
     clock.tick(fps)
     pg.display.update()
