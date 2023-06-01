@@ -8,9 +8,6 @@ class TabletButton(Element):
         self.rect = self.image.get_rect()
         x = window.get_width() / 2 - self.rect.width / 2
         y = window.get_height() - self.rect.height
-        super().__init__(pygame.Rect(x, y, self.rect.width, self.rect.height), window)
+        super().__init__((self.rect.width, self.rect.height), (x, y), window)
         
-        self.window = window
-
-    def update(self):
-        self.window.blit(self.image, (self.x, self.y))
+        self.surface.blit(self.image, (0, 0))
