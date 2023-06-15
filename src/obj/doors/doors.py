@@ -3,7 +3,7 @@ import pygame
 import time
 ucitel_u_dveri = False
 
-
+game_over = pygame.image.load('gameoverscreen.png')
 
 class Doors:
     def __init__(self, tlacitko_rozmery, tlacitko_barva, dvere_rozmery):
@@ -44,14 +44,13 @@ class Doors:
             self.tlacitko_barva = 0,255,0
             
             
-    def odpocet_jumpscare(self):
+    def odpocet_jumpscare(self,window):
         if not self.tlacitko_stisknute and self.ucitel_u_dveri:
-            self.dvere_barva = 255,0,0
-            
+            self.dvere_barva = 255,0,0           
             cas_ted = pygame.time.get_ticks() / 1000
-            
             if cas_ted - self.cas_ucitel >= self.cas_jumpscare:
-                self.dvere_barva = 127,0,0
+                window.blit(game_over,(0,0)) 
+                
         elif self.tlacitko_stisknute and self.ucitel_u_dveri:
             self.ucitel_u_dveri = False
             

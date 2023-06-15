@@ -30,12 +30,12 @@ while True:
             exit()
     
     doors.sance_nastavit_ucitele()
-    doors.odpocet_jumpscare()
+    doors.odpocet_jumpscare(window)
     doors.kontrola_stisku_tlacitka()
     doors.vykreslit(window)
     
     doors_right.sance_nastavit_ucitele()
-    doors_right.odpocet_jumpscare()
+    doors_right.odpocet_jumpscare(window)
     doors_right.kontrola_stisku_tlacitka()
     doors_right.vykreslit(window)
     
