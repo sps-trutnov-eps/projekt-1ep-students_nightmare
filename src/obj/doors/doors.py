@@ -49,7 +49,7 @@ class Doors:
             self.dvere_barva = 255,0,0           
             cas_ted = pygame.time.get_ticks() / 1000
             if cas_ted - self.cas_ucitel >= self.cas_jumpscare:
-                window.blit(game_over,(0,0)) 
+                window.blit(game_over,(0,0))
                 
         elif self.tlacitko_stisknute and self.ucitel_u_dveri:
             self.ucitel_u_dveri = False

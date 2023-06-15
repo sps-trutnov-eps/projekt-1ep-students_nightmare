@@ -29,13 +29,13 @@ while True:
             pygame.quit()
             exit()
     
-    doors.sance_nastavit_ucitele()
     doors.odpocet_jumpscare(window)
+    doors.sance_nastavit_ucitele()
     doors.kontrola_stisku_tlacitka()
     doors.vykreslit(window)
     
-    doors_right.sance_nastavit_ucitele()
     doors_right.odpocet_jumpscare(window)
+    doors_right.sance_nastavit_ucitele()
     doors_right.kontrola_stisku_tlacitka()
     doors_right.vykreslit(window)
     
