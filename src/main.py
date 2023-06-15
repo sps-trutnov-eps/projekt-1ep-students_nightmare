@@ -1,4 +1,13 @@
 import pygame
+from discord import Discord #
+import random as rm #
+import pygame as pg
+
+# Discord
+random_counter = 60 #
+random_cislo = 0 #
+clock = pg.time.Clock()
+fps = 60
 
 from obj.tablet.tablet import Tablet
 from obj.tablet.camera import Camera
@@ -19,7 +28,7 @@ tablet = Tablet(window)
 tablet_button = TabletButton(window)
 computer = Computer()
 doors = Doors()
-
+dc = Discord(400, 250, 500, 500, window) #
 
 while True:
 
@@ -32,11 +41,24 @@ while True:
 
     window.fill((0,0,0))
 
+    # Discord
+    keys = pg.key.get_pressed() #
+
+    if random_counter >= 10: #
+        random_cislo = rm.randrange(1, 150) #
+        random_counter = 0 #
+
+    random_counter += 1 #
+
+    dc.detect(keys) #
+    dc.event(random_cislo) #
+    dc.show() #
+
     if tablet_button.clicked(pygame.mouse):
         tablet.toggle()
     tablet.printCameraList()
     tablet.update()
     tablet_button.update()
 
-
+    clock.tick(fps)
     pygame.display.update()
