@@ -20,23 +20,17 @@ tablet_button = TabletButton(window)
 computer = Computer()
 doors = Doors()
 
-
 while True:
-
     # Events
     for event in pygame.event.get():
         # Easily exit the game
         if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             pygame.quit()
             exit()
-
-    window.fill((0,0,0))
-
-    if tablet_button.clicked(pygame.mouse):
-        tablet.toggle()
-    tablet.printCameraList()
-    tablet.update()
-    tablet_button.update()
-
-
+    
+    doors.sance_nastavit_ucitele()
+    doors.odpocet_jumpscare()
+    doors.kontrola_stisku_tlacitka()
+    doors.vykreslit(window)
+    
     pygame.display.update()
