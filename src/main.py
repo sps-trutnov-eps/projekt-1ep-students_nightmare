@@ -18,9 +18,7 @@ tablet = Tablet()
 computer = Computer()
 doors = Doors()
 
-
 while True:
-
     # Events
     for event in pygame.event.get():
         # Easily exit the game
@@ -28,6 +26,6 @@ while True:
             pygame.quit()
             exit()
     
-
-    Doors.render
+    doors.kontrola_stisku_tlacitka()
+    doors.vykreslit(window)
     pygame.display.update()
