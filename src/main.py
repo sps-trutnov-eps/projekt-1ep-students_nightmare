@@ -42,6 +42,7 @@ while True:
     window.fill((0,0,0))
 
     # Discord
+    not_closable = tablet.showed
     keys = pg.key.get_pressed() #
 
     if random_counter >= 10: #
@@ -50,7 +51,7 @@ while True:
 
     random_counter += 1 #
 
-    dc.detect(keys) #
+    dc.detect(keys, not_closable) #
     dc.event(random_cislo) #
     dc.show() #
 

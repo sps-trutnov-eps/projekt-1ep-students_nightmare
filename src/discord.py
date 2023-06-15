@@ -48,8 +48,9 @@ class Discord():
                 self.sound_2.play()
                 randnum = 0
         
-    def detect(self, key):
+    def detect(self, key, not_closable):
         if self.eventon == True:
-            if key[pg.K_e]:
-                self.zmacknuto = True
-                self.eventon = False
+            if not_closable == False:
+                if key[pg.K_e]:
+                    self.zmacknuto = True
+                    self.eventon = False
