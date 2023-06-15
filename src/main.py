@@ -26,6 +26,9 @@ while True:
             pygame.quit()
             exit()
     
+    doors.sance_nastavit_ucitele()
+    doors.odpocet_jumpscare()
     doors.kontrola_stisku_tlacitka()
     doors.vykreslit(window)
+    
     pygame.display.update()
