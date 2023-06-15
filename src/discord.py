@@ -4,10 +4,11 @@ from pygame import mixer
 class Discord():
     eventon = False
 
-    def __init__(self, dc_sizeX, dc_sizeY, dc_posX, dc_posY, surface):
+    def __init__(self, dc_sizeX, dc_sizeY, dc_posX, dc_posY, surface, death_time):
         
         mixer.init()
 
+        self.death_time = death_time
         self.dc_sizeX = dc_sizeX
         self.dc_sizeY = dc_sizeY
         self.dc_posX = dc_posX
@@ -17,6 +18,8 @@ class Discord():
         self.eventon = False
         self.eventtype = None
         self.zmacknuto = False
+        self.dead = False
+        self.death_counter = 0
 
         self.sound_1 = pg.mixer.Sound("obj/discord/sounds/callvibrate.wav")
         self.sound_2 = pg.mixer.Sound("obj/discord/sounds/zprava.wav")
@@ -48,8 +51,15 @@ class Discord():
                 self.sound_2.play()
                 randnum = 0
         
-    def detect(self, key):
+    def detect(self, mousepos, mousepress):
         if self.eventon == True:
-            if key[pg.K_e]:
-                self.zmacknuto = True
-                self.eventon = False
+            self.death_counter += 1
+            if self.death_counter == self.death_time:
+                self.death = True
+                return(self.death)
+            if mousepos[0] > self.dc_posX and mousepos[0] < (self.dc_posX + self.dc_sizeX):
+                if mousepos[1] > self.dc_posY and mousepos[1] < (self.dc_posY + self.dc_sizeY):
+                    if mousepress[0] == True:
+                        self.zmacknuto = True
+                        self.eventon = False
+                        self.death_counter = 0

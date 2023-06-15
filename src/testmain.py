@@ -11,13 +11,15 @@ fps = 60
 
 obraz = pg.display.set_mode((1280, 720))
 
-dc = Discord(200, 100, 100, 100, obraz) #
+dc = Discord(200, 100, 100, 100, obraz, 300) #
 
 while True:
     obraz.fill((0, 255, 255))
 
-    keys = pg.key.get_pressed() #
+    keys = pg.key.get_pressed()
     events = pg.event.get()
+    mousepos = pg.mouse.get_pos()
+    mousepress = pg.mouse.get_pressed(num_buttons=3)
 
     for i in events:
         if i.type == pg.QUIT:
@@ -34,7 +36,10 @@ while True:
 
     random_counter += 1 #
 
-    dc.detect(keys) #
+    smrt = dc.detect(mousepos, mousepress) #
+    if smrt == True: # ??
+        pg.quit()
+        sys.exit()
     dc.event(random_cislo) #
     dc.show() #
 
