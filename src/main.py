@@ -4,7 +4,7 @@ from obj.tablet.tablet import Tablet
 from obj.tablet.camera import Camera
 from obj.tablet.tablet_button import TabletButton
 from obj.computer.computer import Computer
-from obj.doors.doors import Doors
+from obj.doors.doors import Dvere as Doors
 
 pygame.init()
 
@@ -18,7 +18,7 @@ window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 tablet = Tablet(window)
 tablet_button = TabletButton(window)
 computer = Computer()
-doors = Doors()
+doors = Doors(pygame.mouse.get_pos(), (30, 30), (255,255,255), (50, 150))
 
 
 while True:
@@ -39,6 +39,5 @@ while True:
     tablet.update()
     tablet_button.update()
 
-
-    Doors.render
+    
     pygame.display.update()
