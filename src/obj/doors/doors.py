@@ -6,7 +6,7 @@ ucitel_u_dveri = False
 
 
 class Doors:
-    def __init__(self, tlacitko_rozmery = (50, 50, 50, 50), tlacitko_barva = (100, 200, 50), dvere_rozmery = (100, 300, 100, 300)):
+    def __init__(self, tlacitko_rozmery, tlacitko_barva, dvere_rozmery):
         self.tlacitko_rozmery = list(tlacitko_rozmery)
         self.tlacitko_barva = list(tlacitko_barva)
         
@@ -17,11 +17,13 @@ class Doors:
         self.ucitel_u_dveri = False
         
     def sance_nastavit_ucitele(self):
-        if not self.ucitel_u_dveri and random.randint(0, 1000) < 2:
-            self.ucitel_u_dveri = True
-            
-            self.cas_ucitel = pygame.time.get_ticks() / 1000
-            self.cas_jumpscare = 2 # sekund
+        if not self.tlacitko_stisknute:
+            if not self.ucitel_u_dveri and random.randint(0, 1000) < 2:
+                self.ucitel_u_dveri = True
+                
+                self.cas_ucitel = pygame.time.get_ticks() / 1000
+                self.cas_jumpscare = 2 # sekund
+                
         
     def kontrola_stisku_tlacitka(self):
         pozice_mysi = pygame.mouse.get_pos()
@@ -58,7 +60,9 @@ class Doors:
             self.dvere_barva = 0,0,255
         else:
             self.dvere_barva = 0,255,0
+
             
     def vykreslit(self, window):
         pygame.draw.rect(window, self.dvere_barva, self.dvere_rozmery)
         pygame.draw.rect(window, self.tlacitko_barva, self.tlacitko_rozmery)
+        

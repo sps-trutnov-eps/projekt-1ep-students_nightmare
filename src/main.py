@@ -8,15 +8,18 @@ from obj.doors.doors import Doors
 pygame.init()
 
 # Game window's variables
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
 
 # Game window
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 tablet = Tablet()
 computer = Computer()
-doors = Doors()
+door1 = Doors((50,50,50,50), (0,255,0), (100,300,100,300))
+
+
+
 
 while True:
     # Events
@@ -26,9 +29,9 @@ while True:
             pygame.quit()
             exit()
     
-    doors.sance_nastavit_ucitele()
-    doors.odpocet_jumpscare()
-    doors.kontrola_stisku_tlacitka()
-    doors.vykreslit(window)
+    door1.sance_nastavit_ucitele()
+    door1.odpocet_jumpscare()
+    door1.kontrola_stisku_tlacitka()
+    door1.vykreslit(window)
     
     pygame.display.update()
