@@ -6,7 +6,7 @@ ucitel_u_dveri = False
 
 
 class Doors:
-    def __init__(self, tlacitko_rozmery = (50, 50, 50, 50), tlacitko_barva = (100, 200, 50), dvere_rozmery = (100, 300, 100, 300)):
+    def __init__(self, tlacitko_rozmery, tlacitko_barva, dvere_rozmery):
         self.tlacitko_rozmery = list(tlacitko_rozmery)
         self.tlacitko_barva = list(tlacitko_barva)
         

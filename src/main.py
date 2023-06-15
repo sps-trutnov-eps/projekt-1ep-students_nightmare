@@ -18,7 +18,8 @@ window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 tablet = Tablet(window)
 tablet_button = TabletButton(window)
 computer = Computer()
-doors = Doors()
+doors = Doors((50, 50, 50, 50),(100, 200, 50),(100, 300, 100, 300))
+doors_right = Doors((1820, 50, 50, 50),(100, 200, 50),(1720, 300, 100, 300))
 
 while True:
     # Events
@@ -32,5 +33,10 @@ while True:
     doors.odpocet_jumpscare()
     doors.kontrola_stisku_tlacitka()
     doors.vykreslit(window)
+    
+    doors_right.sance_nastavit_ucitele()
+    doors_right.odpocet_jumpscare()
+    doors_right.kontrola_stisku_tlacitka()
+    doors_right.vykreslit(window)
     
     pygame.display.update()
