@@ -10,7 +10,3 @@ class Camera(Element):
             self.image = image
         self.name = name
         super().__init__((55,55), position, parent_surface)
-
-        # Set position of image (otherwise it's (0, 0))
-        self.x = position[0]
-        self.y = position[1]
