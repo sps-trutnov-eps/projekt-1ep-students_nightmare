@@ -1,6 +1,7 @@
 import random
 import pygame
 import time
+
 ucitel_u_dveri = False
 
 game_over = pygame.image.load('gameoverscreen.png')
@@ -15,6 +16,8 @@ class Doors:
         
         self.tlacitko_stisknute = False
         self.ucitel_u_dveri = False
+        
+        self.game_over_happened = False 
         
     def sance_nastavit_ucitele(self):
         if not self.ucitel_u_dveri and random.randint(0, 1000) < 2:
@@ -50,6 +53,8 @@ class Doors:
             cas_ted = pygame.time.get_ticks() / 1000
             if cas_ted - self.cas_ucitel >= self.cas_jumpscare:
                 window.blit(game_over,(0,0))
+                self.game_over_happened = True
+                
                 
         elif self.tlacitko_stisknute and self.ucitel_u_dveri:
             self.ucitel_u_dveri = False

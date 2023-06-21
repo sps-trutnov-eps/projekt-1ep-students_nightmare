@@ -21,6 +21,7 @@ computer = Computer()
 doors = Doors((50, 50, 50, 50),(100, 200, 50),(100, 300, 100, 300))
 doors_right = Doors((1820, 50, 50, 50),(100, 200, 50),(1720, 300, 100, 300))
 
+
 while True:
     # Events
     for event in pygame.event.get():
@@ -28,15 +29,18 @@ while True:
         if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             pygame.quit()
             exit()
-    
-    doors.odpocet_jumpscare(window)
-    doors.sance_nastavit_ucitele()
-    doors.kontrola_stisku_tlacitka()
-    doors.vykreslit(window)
-    
-    doors_right.odpocet_jumpscare(window)
-    doors_right.sance_nastavit_ucitele()
-    doors_right.kontrola_stisku_tlacitka()
-    doors_right.vykreslit(window)
-    
+            
+            
+    if not doors.game_over_happened:
+        doors.sance_nastavit_ucitele()
+        doors.kontrola_stisku_tlacitka()
+        doors_right.sance_nastavit_ucitele()
+        doors_right.kontrola_stisku_tlacitka()
+        
+        doors.vykreslit(window)
+        doors_right.vykreslit(window)
+
+        doors.odpocet_jumpscare(window)
+        doors_right.odpocet_jumpscare(window)
+        
     pygame.display.update()
