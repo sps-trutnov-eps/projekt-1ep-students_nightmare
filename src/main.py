@@ -1,11 +1,8 @@
 import pygame
 
-from obj.tablet.tablet import Tablet
-from obj.tablet.camera import Camera
-from obj.tablet.tablet_button import TabletButton
 from obj.computer.computer import Computer
 from obj.doors.doors import Doors
-
+from obj.tablet.tablet_krejdl import Tablet
 pygame.init()
 
 # Game window's variables
@@ -15,12 +12,11 @@ SCREEN_HEIGHT = 1080
 # Game window
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-tablet = Tablet(window)
-tablet_button = TabletButton(window)
+
 computer = Computer()
 doors = Doors((50, 50, 50, 50),(100, 200, 50),(100, 300, 100, 300))
 doors_right = Doors((1820, 50, 50, 50),(100, 200, 50),(1720, 300, 100, 300))
-
+tablet = Tablet()
 
 while True:
     # Events
@@ -42,5 +38,7 @@ while True:
 
         doors.odpocet_jumpscare(window)
         doors_right.odpocet_jumpscare(window)
+        tablet.vykreslit(window)
+        
         
     pygame.display.update()
