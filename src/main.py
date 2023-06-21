@@ -18,11 +18,10 @@ window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 tablet = Tablet(window)
 tablet_button = TabletButton(window)
 computer = Computer()
-doors = Doors(pygame.mouse.get_pos(), (30, 30), (255,255,255), (50, 150))
-
+doors = Doors((50, 50, 50, 50),(100, 200, 50),(100, 300, 100, 300))
+doors_right = Doors((1820, 50, 50, 50),(100, 200, 50),(1720, 300, 100, 300))
 
 while True:
-
     # Events
     for event in pygame.event.get():
         # Easily exit the game
@@ -30,14 +29,14 @@ while True:
             pygame.quit()
             exit()
     
-
-    window.fill((0,0,0))
-
-    if tablet_button.clicked(pygame.mouse):
-        tablet.toggle()
-    tablet.printCameraList()
-    tablet.update()
-    tablet_button.update()
-
+    doors.odpocet_jumpscare(window)
+    doors.sance_nastavit_ucitele()
+    doors.kontrola_stisku_tlacitka()
+    doors.vykreslit(window)
+    
+    doors_right.odpocet_jumpscare(window)
+    doors_right.sance_nastavit_ucitele()
+    doors_right.kontrola_stisku_tlacitka()
+    doors_right.vykreslit(window)
     
     pygame.display.update()
