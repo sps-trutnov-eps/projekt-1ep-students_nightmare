@@ -25,7 +25,14 @@ class Doors:
                 self.ucitel_u_dveri = True
             
                 self.cas_ucitel = pygame.time.get_ticks() / 1000
-                self.cas_jumpscare = 2 # sekund
+                self.cas_jumpscare = 10 # sekund
+                
+    def nastavit_ucitele(self):
+        self.ucitel_u_dveri = True
+            
+        self.cas_ucitel = pygame.time.get_ticks() / 1000
+        self.cas_jumpscare = 10 # sekund
+        
         
     def kontrola_stisku_tlacitka(self):
         pozice_mysi = pygame.mouse.get_pos()

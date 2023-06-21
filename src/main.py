@@ -1,10 +1,10 @@
 import pygame
-
+import random
 from obj.computer.computer import Computer
 from obj.doors.doors import Doors
 from obj.tablet.tablet_krejdl import Tablet
 pygame.init()
-
+jake_dvere = 0
 # Game window's variables
 SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1080
@@ -28,14 +28,27 @@ while True:
             
             
     if not doors.game_over_happened:
-        doors.sance_nastavit_ucitele()
+        if tablet.neni_u_kamer() and jake_dvere == 0:
+            jake_dvere = random.randint(1,2)
+
+            if jake_dvere == 1:
+                doors.nastavit_ucitele()
+            if jake_dvere == 2:
+                doors_right.nastavit_ucitele()
+            
+        
         doors.kontrola_stisku_tlacitka()
-        doors_right.sance_nastavit_ucitele()
         doors_right.kontrola_stisku_tlacitka()
         
+        if tablet.pozice_ucitele == [False, False, False, False] and not doors.ucitel_u_dveri and not doors_right.ucitel_u_dveri:
+            tablet.pozice_ucitele = [True, False, False, False]
+                
         doors.vykreslit(window)
         doors_right.vykreslit(window)
-
+        tablet.posunout()
+        
+        
+        
         doors.odpocet_jumpscare(window)
         doors_right.odpocet_jumpscare(window)
         tablet.vykreslit(window)
