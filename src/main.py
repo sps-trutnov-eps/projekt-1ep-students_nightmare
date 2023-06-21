@@ -4,7 +4,7 @@ from obj.tablet.tablet import Tablet
 from obj.tablet.camera import Camera
 from obj.tablet.tablet_button import TabletButton
 from obj.computer.computer import Computer
-from obj.doors.doors import Dvere as Doors
+from obj.doors.doors import Doors
 
 pygame.init()
 
