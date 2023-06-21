@@ -20,11 +20,12 @@ class Doors:
         self.game_over_happened = False 
         
     def sance_nastavit_ucitele(self):
-        if not self.ucitel_u_dveri and random.randint(0, 1000) < 2:
-            self.ucitel_u_dveri = True
+        if not self.tlacitko_stisknute:
+            if not self.ucitel_u_dveri and random.randint(0, 1000) < 2:
+                self.ucitel_u_dveri = True
             
-            self.cas_ucitel = pygame.time.get_ticks() / 1000
-            self.cas_jumpscare = 2 # sekund
+                self.cas_ucitel = pygame.time.get_ticks() / 1000
+                self.cas_jumpscare = 2 # sekund
         
     def kontrola_stisku_tlacitka(self):
         pozice_mysi = pygame.mouse.get_pos()
