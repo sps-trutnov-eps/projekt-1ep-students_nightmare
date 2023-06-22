@@ -1,6 +1,5 @@
 import pygame
 import random
-from obj.computer.computer import Computer
 from obj.doors.doors import Doors
 from obj.tablet.tablet_krejdl import Tablet
 pygame.init()
@@ -12,8 +11,6 @@ SCREEN_HEIGHT = 1080
 # Game window
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
-computer = Computer()
 doors = Doors((50, 50, 50, 50),(100, 200, 50),(100, 300, 100, 300))
 doors_right = Doors((1820, 50, 50, 50),(100, 200, 50),(1720, 300, 100, 300))
 tablet = Tablet()
