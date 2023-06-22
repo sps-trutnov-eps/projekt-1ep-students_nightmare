@@ -1,15 +1,20 @@
-Brikner František
-Budinský Josef
-Dědek Šimon
-Dobiáš Patrik
-Fenik Tadeáš
-Forbelský Martin
-Hajnyš Lukáš
-Hlaváček Jakub
-Hůlek David
-Jáci Dominik
-Ježek Jakub
-Klose Tomáš
-Krejdl Tomáš
-Tryzna Jakub
-Vrbata Michal
+# Vývojáři
+
++ Dědek Šimon
++ Fenik Tadeáš
++ Forbelský Martin
++ Hajnyš Lukáš
++ Hlaváček Jakub
++ Hůlek David
++ Ježek Jakub
++ Klose Tomáš
++ Krejdl Tomáš
++ Tryzna Jakub
++ Vrbata Michal
+
+# Nezúčatnění
+
++ Brikner František
++ Budinský Josef
++ Dobiáš Patrik
++ Jáci Dominik

@@ -1,6 +1,3 @@
 # Použitá díla třetích stran
 
-- **<autor>**; *<název>*; <zdroj>
-- **<autor>**; *<název>*; <zdroj>
-- **<autor>**; *<název>*; <zdroj>
-
+Ve výsledném kódu nejsou použita díla třetích stran s výjimkou běžných knihoven.
