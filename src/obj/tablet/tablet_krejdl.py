@@ -27,7 +27,8 @@ class Tablet:
         return self.pozice_ucitele == [False, False, False, False]
             
             
-        
+    def je_zpatky_u_kamer(self):
+        self.pozice_ucitele = [True, False, False, False]
         
         
     def vykreslit(self, window):

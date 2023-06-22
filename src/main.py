@@ -35,6 +35,9 @@ while True:
                 doors.nastavit_ucitele()
             if jake_dvere == 2:
                 doors_right.nastavit_ucitele()
+        if not doors.ucitel_u_dveri and not doors_right.ucitel_u_dveri and tablet.neni_u_kamer():
+            jake_dvere = 0
+            tablet.je_zpatky_u_kamer()
             
         
         doors.kontrola_stisku_tlacitka()
@@ -45,13 +48,12 @@ while True:
                 
         doors.vykreslit(window)
         doors_right.vykreslit(window)
+
         tablet.posunout()
-        
-        
+        tablet.vykreslit(window)
         
         doors.odpocet_jumpscare(window)
         doors_right.odpocet_jumpscare(window)
-        tablet.vykreslit(window)
         
         
     pygame.display.update()
